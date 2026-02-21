@@ -9,12 +9,12 @@
 <body>
   <main class="container">
     <h1>EduAsistente MX</h1>
-    <p class="subtitle">Ruta educativa personalizada para secundaria y bachillerato en México + prompts guiados para Gemini.</p>
+    <p class="subtitle">Autoaprendizaje guiado para secundaria y preparatoria en México con prompts listos para Gemini.</p>
 
     <section class="grid">
       <article class="card">
         <h2>0) Acceso Gmail (simulado)</h2>
-        <p class="hint">MVP sin backend: se valida formato @gmail.com para reflejar tu requisito de acceso único.</p>
+        <p class="hint">MVP sin backend: se valida formato @gmail.com para reflejar acceso único.</p>
         <form id="accessForm">
           <label>Correo Gmail</label>
           <input name="gmail" type="email" placeholder="ejemplo@gmail.com" required />
@@ -26,38 +26,26 @@
       </article>
 
       <article class="card">
-        <h2>1) Perfil del estudiante</h2>
+        <h2>1) Perfil académico (rápido)</h2>
         <form id="profileForm">
           <label>Nombre</label>
           <input name="nombre" placeholder="Ej. Valeria" />
 
           <label>Nivel</label>
-          <select name="nivel">
+          <select name="nivel" id="nivelSelect">
             <option value="secundaria">Secundaria</option>
-            <option value="bachillerato">Bachillerato</option>
+            <option value="preparatoria">Preparatoria</option>
           </select>
 
-          <label>Grado</label>
-          <select name="grado">
-            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-            <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+          <label>Año</label>
+          <select name="anio" id="anioSelect">
+            <option value="1">1°</option>
+            <option value="2">2°</option>
+            <option value="3">3°</option>
           </select>
 
-          <label>Materia fuerte</label>
-          <input name="materiaFuerte" placeholder="Ej. Historia" />
-
-          <label>Materia reto</label>
-          <input name="materiaReto" placeholder="Ej. Matemáticas" />
-
-          <label>Estilo de aprendizaje</label>
-          <select name="estilo">
-            <option value="visual">Visual</option>
-            <option value="auditivo">Auditivo</option>
-            <option value="práctico">Práctico</option>
-          </select>
-
-          <label>Meta semanal</label>
-          <input name="metaSemanal" placeholder="Ej. mejorar fracciones y ecuaciones" />
+          <label>Materia principal</label>
+          <select name="materiaPerfil" id="materiaPerfilSelect"></select>
 
           <div class="actions">
             <button type="submit">Guardar perfil (+20 XP)</button>
@@ -66,25 +54,27 @@
       </article>
 
       <article class="card">
-        <h2>2) Prompt builder guiado para Gemini</h2>
+        <h2>2) Prompt builder guiado</h2>
         <form id="promptForm">
-          <label>Tipo de prompt</label>
-          <select name="tipoPrompt">
-            <option value="diagnostico">Diagnóstico inicial</option>
-            <option value="explicacion">Explicación por nivel</option>
-            <option value="plan">Plan semanal</option>
-            <option value="examen">Refuerzo para examen</option>
-            <option value="socratico">Tutor socrático</option>
+          <label>Tipo de actividad</label>
+          <select name="tipoActividad" id="tipoActividadSelect">
+            <option value="tarea">Tarea</option>
+            <option value="proyecto">Proyecto</option>
+            <option value="trabajo_en_clase">Trabajo en clase</option>
+            <option value="resumen">Resumen</option>
+            <option value="ensayo">Ensayo</option>
+            <option value="cuestionario">Cuestionario</option>
+            <option value="preparacion_examen">Preparación para examen</option>
           </select>
 
           <label>Materia</label>
-          <input name="materia" required placeholder="Ej. Química" />
+          <select name="materia" id="materiaPromptSelect"></select>
 
           <label>Tema</label>
-          <input name="tema" required placeholder="Ej. Tabla periódica" />
+          <select name="tema" id="temaSelect"></select>
 
           <label>Objetivo</label>
-          <input name="objetivo" required placeholder="Ej. Entender grupos y periodos" />
+          <select name="objetivo" id="objetivoSelect"></select>
 
           <label>Dificultad</label>
           <select name="dificultad">
@@ -92,9 +82,6 @@
             <option>Media</option>
             <option>Avanzada</option>
           </select>
-
-          <label>Contexto adicional</label>
-          <input name="contextoExtra" placeholder="Ej. Tengo 20 minutos y examen en 7 días" />
 
           <div class="actions">
             <button type="submit">Generar prompt (+25 XP)</button>
@@ -111,7 +98,7 @@
 
       <article class="card">
         <h2>3) Ruta de estudio automática (20 min)</h2>
-        <p class="hint">Se genera con base en perfil y objetivo actual.</p>
+        <p class="hint">Se genera automáticamente según nivel, año, materia y tipo de actividad.</p>
         <button id="buildPlan">Crear micro-plan (+15 XP)</button>
         <ul id="studyPlan" class="mission-list"></ul>
       </article>
@@ -135,7 +122,7 @@
     </section>
 
     <footer>
-      MVP educativo para personalización académica en México · Uso guiado de Gemini sin API directa
+      MVP educativo para autoaprendizaje en México · Uso guiado de Gemini sin API directa
     </footer>
   </main>
 

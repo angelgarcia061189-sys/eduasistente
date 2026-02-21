@@ -1,48 +1,32 @@
-# Batería de prompts para Gemini (secundaria y bachillerato MX)
+# Batería de prompts para Gemini (autoaprendizaje MX)
 
-Estos templates están alineados al selector de "Tipo de prompt" dentro del MVP.
+La app ya genera estos prompts automáticamente según nivel, año, materia, tema, objetivo y tipo de actividad.
 
-## 1) Diagnóstico inicial
+## Tipos de actividad soportados
 
-```text
-Actúa como orientador académico para estudiantes mexicanos de [nivel].
-Haz 10 preguntas para detectar fortalezas, áreas de mejora, estilo de aprendizaje y hábitos.
-Luego entrega: resumen + 3 prioridades para este mes.
-```
+- Tarea
+- Proyecto
+- Trabajo en clase
+- Resumen
+- Ensayo
+- Cuestionario
+- Preparación para examen
 
-## 2) Explicación por nivel
-
-```text
-Explícame [tema] para [grado y nivel en México].
-Usa lenguaje claro, ejemplos cotidianos y 5 preguntas de práctica con respuestas.
-```
-
-## 3) Plan de estudio semanal
+## Estructura base del prompt
 
 ```text
-Con este contexto:
-- nivel: [secundaria/bachillerato]
-- grado: [x]
-- tiempo diario: [x min]
-- materias clave: [lista]
+Actúa como tutor experto para [nivel] [año] en México con enfoque de autoaprendizaje.
 
-Crea un plan semanal (lunes-domingo) con bloques de estudio y descanso.
-```
+Actividad solicitada:
+- Tipo: [tipo de actividad]
+- Materia: [materia]
+- Tema: [tema]
+- Objetivo: [objetivo]
+- Dificultad: [básica/media/avanzada]
 
-## 4) Refuerzo para examen
-
-```text
-Presentaré examen de [materia] sobre [temas].
-Diseña estrategia de 5 días con:
-- contenidos por día
-- ejercicios
-- errores comunes
-- simulacro final
-```
-
-## 5) Tutor socrático
-
-```text
-No me des la respuesta de [problema].
-Guíame con preguntas paso a paso para resolverlo y luego valida mi razonamiento.
+Instrucciones:
+1) Guiar paso a paso.
+2) Explicar con ejemplos claros.
+3) Incluir mini práctica de 5 reactivos.
+4) Cerrar con checklist de verificación.
 ```
