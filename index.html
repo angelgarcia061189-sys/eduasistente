@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduAsistente MX</title>
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>EduAsistente MX</h1>
+    <p class="subtitle">Autoaprendizaje guiado para secundaria y preparatoria en México con prompts listos para Gemini.</p>
+
+    <section class="grid">
+      <article class="card">
+        <h2>0) Acceso Gmail (simulado)</h2>
+        <p class="hint">MVP sin backend: se valida formato @gmail.com para reflejar acceso único.</p>
+        <form id="accessForm">
+          <label>Correo Gmail</label>
+          <input name="gmail" type="email" placeholder="ejemplo@gmail.com" required />
+          <div class="actions">
+            <button type="submit">Validar acceso</button>
+          </div>
+          <p id="accessStatus" class="hint"></p>
+        </form>
+      </article>
+
+      <article class="card">
+        <h2>1) Perfil académico (rápido)</h2>
+        <form id="profileForm">
+          <label>Nombre</label>
+          <input name="nombre" placeholder="Ej. Valeria" />
+
+          <label>Nivel</label>
+          <select name="nivel" id="nivelSelect">
+            <option value="secundaria">Secundaria</option>
+            <option value="preparatoria">Preparatoria</option>
+          </select>
+
+          <label>Año</label>
+          <select name="anio" id="anioSelect">
+            <option value="1">1°</option>
+            <option value="2">2°</option>
+            <option value="3">3°</option>
+          </select>
+
+          <label>Materia principal</label>
+          <select name="materiaPerfil" id="materiaPerfilSelect"></select>
+
+          <div class="actions">
+            <button type="submit">Guardar perfil (+20 XP)</button>
+          </div>
+        </form>
+      </article>
+
+      <article class="card">
+        <h2>2) Prompt builder guiado</h2>
+        <form id="promptForm">
+          <label>Tipo de actividad</label>
+          <select name="tipoActividad" id="tipoActividadSelect">
+            <option value="tarea">Tarea</option>
+            <option value="proyecto">Proyecto</option>
+            <option value="trabajo_en_clase">Trabajo en clase</option>
+            <option value="resumen">Resumen</option>
+            <option value="ensayo">Ensayo</option>
+            <option value="cuestionario">Cuestionario</option>
+            <option value="preparacion_examen">Preparación para examen</option>
+          </select>
+
+          <label>Materia</label>
+          <select name="materia" id="materiaPromptSelect"></select>
+
+          <label>Tema</label>
+          <select name="tema" id="temaSelect"></select>
+
+          <label>Objetivo</label>
+          <select name="objetivo" id="objetivoSelect"></select>
+
+          <label>Dificultad</label>
+          <select name="dificultad">
+            <option>Básica</option>
+            <option>Media</option>
+            <option>Avanzada</option>
+          </select>
+
+          <div class="actions">
+            <button type="submit">Generar prompt (+25 XP)</button>
+            <a id="geminiLink" class="button-link secondary" href="https://gemini.google.com" target="_blank" rel="noreferrer">Abrir Gemini (+10 XP)</a>
+          </div>
+        </form>
+
+        <label style="margin-top: .8rem;">Prompt recomendado</label>
+        <textarea id="promptOutput" placeholder="Aquí aparecerá el prompt listo para copiar..."></textarea>
+        <div class="actions">
+          <button id="copyPrompt" type="button" class="secondary">Copiar prompt</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>3) Ruta de estudio automática (20 min)</h2>
+        <p class="hint">Se genera automáticamente según nivel, año, materia y tipo de actividad.</p>
+        <button id="buildPlan">Crear micro-plan (+15 XP)</button>
+        <ul id="studyPlan" class="mission-list"></ul>
+      </article>
+
+      <article class="card">
+        <h2>4) Progreso gamificado</h2>
+        <p><strong>XP:</strong> <span id="xp">0</span></p>
+        <p><strong>Etapa:</strong> <span id="stage">1</span></p>
+        <p><strong>Racha:</strong> <span id="streak">0</span> días</p>
+        <p><strong>Nivel:</strong> <span id="level">Inicial</span></p>
+
+        <small>Avance al siguiente tramo</small>
+        <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+
+        <h3>Misiones</h3>
+        <ul id="missions" class="mission-list"></ul>
+
+        <h3>Logros</h3>
+        <div id="achievements" class="badges"></div>
+      </article>
+    </section>
+
+    <footer>
+      MVP educativo para autoaprendizaje en México · Uso guiado de Gemini sin API directa
+    </footer>
+  </main>
+
+  <script src="src/app.js"></script>
+</body>
+</html>
